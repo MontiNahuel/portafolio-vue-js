@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import logoVue from '../assets/logo.svg'
 import { RouterLink } from 'vue-router';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const isHomePage = computed(() => route.path === '/');
 defineProps<{
     items : { textoItem: string; urlItem: string }[]
 }>()
@@ -16,7 +21,7 @@ defineProps<{
                     {{ item.textoItem }}
                 </RouterLink>
 
-                <a v-else href="#">
+                <a v-if="isHomePage" href="#">
                     {{ item.textoItem }}
                 </a>
 
