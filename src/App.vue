@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import Navbar from './components/TheNavbar.vue'
+import { RouterView } from 'vue-router'
+import { NavInfo } from './data.ts'
 </script>
 
 <template>
-  <Navbar :items="['Home', 'About', 'Contact']"/>
+  <Navbar :items="NavInfo"/>
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped>

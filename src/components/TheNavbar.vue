@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import logoVue from '../assets/logo.svg'
+import { RouterLink } from 'vue-router';
 defineProps<{
-    items : string[]
+    items : { textoItem: string; urlItem: string }[]
 }>()
 </script>
 
@@ -9,14 +10,25 @@ defineProps<{
     <nav>
         <img :src="logoVue" alt="">
         <ul>
-            <li v-for="item in items" :key="item">
-                <a href="#">{{ item }}</a>
+            <li v-for="item in items" :key="item.textoItem">
+    
+                <RouterLink v-if="item.textoItem === 'Inicio'" :to="item.urlItem">
+                    {{ item.textoItem }}
+                </RouterLink>
+
+                <a v-else href="#">
+                    {{ item.textoItem }}
+                </a>
+
             </li>
         </ul>
     </nav>
 </template>
 
 <style scoped>
+
+@import '../assets/base.css';
+
 nav {
     position: fixed;
     top: 0;
@@ -49,6 +61,15 @@ a {
     text-decoration: none;
     border-radius: 3px;
     padding: 5px 15px;
+    text-decoration: none;
+    color: var(--button-green-color);
+    transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: var(--button-green-color-hover-02);
+  }
 }
 
 </style>
