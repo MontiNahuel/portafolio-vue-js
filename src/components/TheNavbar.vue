@@ -21,7 +21,7 @@ defineProps<{
                     {{ item.textoItem }}
                 </RouterLink>
 
-                <a v-if="isHomePage" href="#">
+                <a v-else-if="isHomePage" href="#">
                     {{ item.textoItem }}
                 </a>
 
